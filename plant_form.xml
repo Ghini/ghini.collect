@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Plant Form</h:title>
+    <model>
+      <instance>
+        <plant_form id="plant_form_r" version="3">
+          <end/>
+          <username/>
+          <deviceid/>
+          <acc_no_scan/>
+          <acc_no_typed/>
+          <species/>
+          <location/>
+          <photo_repeat jr:template="">
+            <photo/>
+          </photo_repeat>
+          <note/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </plant_form>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/plant_form/end" type="dateTime"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/plant_form/username" type="string"/>
+      <bind jr:preload="property" jr:preloadParams="deviceid" nodeset="/plant_form/deviceid" type="string"/>
+      <bind nodeset="/plant_form/acc_no_scan" type="barcode"/>
+      <bind nodeset="/plant_form/acc_no_typed" relevant=" /plant_form/acc_no_scan  = ''" type="string"/>
+      <bind nodeset="/plant_form/species" type="string"/>
+      <bind nodeset="/plant_form/location" type="string"/>
+      <bind nodeset="/plant_form/photo_repeat/photo" type="binary"/>
+      <bind nodeset="/plant_form/note" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/plant_form/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/plant_form/acc_no_scan">
+      <label>Plant ID</label>
+    </input>
+    <input ref="/plant_form/acc_no_typed">
+      <label>Plant ID</label>
+    </input>
+    <input ref="/plant_form/species">
+      <label>Species</label>
+    </input>
+    <input ref="/plant_form/location">
+      <label>Location</label>
+    </input>
+    <group ref="/plant_form/photo_repeat">
+      <label>add a new picture</label>
+      <repeat nodeset="/plant_form/photo_repeat">
+        <upload mediatype="image/*" ref="/plant_form/photo_repeat/photo">
+          <label>Picture</label>
+        </upload>
+      </repeat>
+    </group>
+    <input ref="/plant_form/note">
+      <label>Note</label>
+    </input>
+  </h:body>
+</h:html>
