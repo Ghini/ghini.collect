@@ -9,7 +9,9 @@
           <acc_no_typed/>
           <species/>
           <location/>
-          <photo/>
+          <photo_repeat jr:template="">
+            <photo/>
+          </photo_repeat>
           <plant_count/>
           <jar_count/>
           <jar_repeat jr:template="">
@@ -25,7 +27,7 @@
       <bind nodeset="/lab_plants/acc_no_typed" relevant=" /lab_plants/acc_no_scan  = ''" type="string"/>
       <bind nodeset="/lab_plants/species" type="string"/>
       <bind nodeset="/lab_plants/location" type="string"/>
-      <bind nodeset="/lab_plants/photo" type="binary"/>
+      <bind nodeset="/lab_plants/photo_repeat/photo" type="binary"/>
       <bind nodeset="/lab_plants/plant_count" type="int"/>
       <bind nodeset="/lab_plants/jar_count" type="int"/>
       <bind nodeset="/lab_plants/jar_repeat/jar_content" type="int"/>
@@ -46,9 +48,14 @@
     <input ref="/lab_plants/location">
       <label>Location</label>
     </input>
-    <upload mediatype="image/*" ref="/lab_plants/photo">
-      <label>Picture</label>
-    </upload>
+    <group ref="/lab_plants/photo_repeat">
+      <label>Pictures</label>
+      <repeat nodeset="/lab_plants/photo_repeat">
+        <upload mediatype="image/*" ref="/lab_plants/photo_repeat/photo">
+          <label>Picture</label>
+        </upload>
+      </repeat>
+    </group>
     <input ref="/lab_plants/plant_count">
       <label># de plantas</label>
     </input>
