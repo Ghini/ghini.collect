@@ -3,6 +3,72 @@
   <h:head>
     <h:title>Plant Form</h:title>
     <model>
+      <itext>
+        <translation lang="es">
+          <text id="/plant_form/acc_no_typed:label">
+            <value>código</value>
+          </text>
+          <text id="/plant_form/photo_repeat:label">
+            <value>otra foto</value>
+          </text>
+          <text id="/plant_form/species:label">
+            <value>especie</value>
+          </text>
+          <text id="/plant_form/alive:label">
+            <value>viva</value>
+          </text>
+          <text id="/plant_form/alive/TRUE:label">
+            <value>viva</value>
+          </text>
+          <text id="/plant_form/photo_repeat/photo:label">
+            <value>foto</value>
+          </text>
+          <text id="/plant_form/acc_no_scan:label">
+            <value>código</value>
+          </text>
+          <text id="/plant_form/alive/FALSE:label">
+            <value>muerta</value>
+          </text>
+          <text id="/plant_form/note:label">
+            <value>notas</value>
+          </text>
+          <text id="/plant_form/location:label">
+            <value>ubicación</value>
+          </text>
+        </translation>
+        <translation default="true()" lang="English">
+          <text id="/plant_form/acc_no_typed:label">
+            <value>Plant ID</value>
+          </text>
+          <text id="/plant_form/photo_repeat:label">
+            <value>add a new picture</value>
+          </text>
+          <text id="/plant_form/species:label">
+            <value>Species</value>
+          </text>
+          <text id="/plant_form/alive:label">
+            <value>Alive</value>
+          </text>
+          <text id="/plant_form/alive/TRUE:label">
+            <value>alive</value>
+          </text>
+          <text id="/plant_form/photo_repeat/photo:label">
+            <value>Picture</value>
+          </text>
+          <text id="/plant_form/acc_no_scan:label">
+            <value>Plant ID</value>
+          </text>
+          <text id="/plant_form/alive/FALSE:label">
+            <value>dead</value>
+          </text>
+          <text id="/plant_form/note:label">
+            <value>Note</value>
+          </text>
+          <text id="/plant_form/location:label">
+            <value>Location</value>
+          </text>
+        </translation>
+      </itext>
       <instance>
         <plant_form id="plant_form_r" version="3">
           <end/>
@@ -15,6 +81,7 @@
           <photo_repeat jr:template="">
             <photo/>
           </photo_repeat>
+          <alive/>
           <note/>
           <meta>
             <instanceID/>
@@ -29,33 +96,45 @@
       <bind nodeset="/plant_form/species" type="string"/>
       <bind nodeset="/plant_form/location" type="string"/>
       <bind nodeset="/plant_form/photo_repeat/photo" type="binary"/>
+      <bind nodeset="/plant_form/alive" type="select1"/>
       <bind nodeset="/plant_form/note" type="string"/>
       <bind calculate="concat('uuid:', uuid())" nodeset="/plant_form/meta/instanceID" readonly="true()" type="string"/>
     </model>
   </h:head>
   <h:body>
     <input ref="/plant_form/acc_no_scan">
-      <label>Plant ID</label>
+      <label ref="jr:itext('/plant_form/acc_no_scan:label')"/>
     </input>
     <input ref="/plant_form/acc_no_typed">
-      <label>Plant ID</label>
+      <label ref="jr:itext('/plant_form/acc_no_typed:label')"/>
     </input>
     <input ref="/plant_form/species">
-      <label>Species</label>
+      <label ref="jr:itext('/plant_form/species:label')"/>
     </input>
     <input ref="/plant_form/location">
-      <label>Location</label>
+      <label ref="jr:itext('/plant_form/location:label')"/>
     </input>
     <group ref="/plant_form/photo_repeat">
-      <label>add a new picture</label>
+      <label ref="jr:itext('/plant_form/photo_repeat:label')"/>
       <repeat nodeset="/plant_form/photo_repeat">
         <upload mediatype="image/*" ref="/plant_form/photo_repeat/photo">
-          <label>Picture</label>
+          <label ref="jr:itext('/plant_form/photo_repeat/photo:label')"/>
         </upload>
       </repeat>
     </group>
+    <select1 ref="/plant_form/alive">
+      <label ref="jr:itext('/plant_form/alive:label')"/>
+      <item>
+        <label ref="jr:itext('/plant_form/alive/TRUE:label')"/>
+        <value>TRUE</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/plant_form/alive/FALSE:label')"/>
+        <value>FALSE</value>
+      </item>
+    </select1>
     <input ref="/plant_form/note">
-      <label>Note</label>
+      <label ref="jr:itext('/plant_form/note:label')"/>
     </input>
   </h:body>
 </h:html>
