@@ -17,7 +17,10 @@
           <text id="/plant_form/alive:label">
             <value>viva</value>
           </text>
-          <text id="/plant_form/alive/TRUE:label">
+          <text id="/plant_form/alive/0:label">
+            <value>muerta</value>
+          </text>
+          <text id="/plant_form/alive/1:label">
             <value>viva</value>
           </text>
           <text id="/plant_form/photo_repeat/photo:label">
@@ -25,9 +28,6 @@
           </text>
           <text id="/plant_form/acc_no_scan:label">
             <value>código</value>
-          </text>
-          <text id="/plant_form/alive/FALSE:label">
-            <value>muerta</value>
           </text>
           <text id="/plant_form/note:label">
             <value>notas</value>
@@ -49,7 +49,10 @@
           <text id="/plant_form/alive:label">
             <value>Alive</value>
           </text>
-          <text id="/plant_form/alive/TRUE:label">
+          <text id="/plant_form/alive/0:label">
+            <value>dead</value>
+          </text>
+          <text id="/plant_form/alive/1:label">
             <value>alive</value>
           </text>
           <text id="/plant_form/photo_repeat/photo:label">
@@ -57,9 +60,6 @@
           </text>
           <text id="/plant_form/acc_no_scan:label">
             <value>Plant ID</value>
-          </text>
-          <text id="/plant_form/alive/FALSE:label">
-            <value>dead</value>
           </text>
           <text id="/plant_form/note:label">
             <value>Note</value>
@@ -70,7 +70,7 @@
         </translation>
       </itext>
       <instance>
-        <plant_form id="plant_form_r" version="3">
+        <plant_form id="plant_form_r" version="4">
           <end/>
           <username/>
           <deviceid/>
@@ -125,12 +125,12 @@
     <select1 ref="/plant_form/alive">
       <label ref="jr:itext('/plant_form/alive:label')"/>
       <item>
-        <label ref="jr:itext('/plant_form/alive/TRUE:label')"/>
-        <value>TRUE</value>
+        <label ref="jr:itext('/plant_form/alive/1:label')"/>
+        <value>1</value>
       </item>
       <item>
-        <label ref="jr:itext('/plant_form/alive/FALSE:label')"/>
-        <value>FALSE</value>
+        <label ref="jr:itext('/plant_form/alive/0:label')"/>
+        <value>0</value>
       </item>
     </select1>
     <input ref="/plant_form/note">
